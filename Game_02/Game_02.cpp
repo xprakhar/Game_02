@@ -1,12 +1,25 @@
-﻿// Game_02.cpp : Defines the entry point for the application.
-//
+﻿#include <iostream>
 
-#include "Game_02.h"
+#include <vulkan/vulkan.h>
+#include <volk.h>
+#include <GLFW/glfw3.h>
 
-using namespace std;
+static const int WIDTH		= 1280;
+static const int HEIGHT		= 720;
+static const char* APP_NAME = "Game_02";
 
 int main()
 {
-	cout << "Hello CMake." << endl;
+	if (!glfwInit())
+		return 1;
+
+	glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, APP_NAME, nullptr, nullptr);
+
+	while (!glfwWindowShouldClose(window)) {
+		glfwPollEvents();
+	}
+
+	glfwTerminate();
 	return 0;
 }
